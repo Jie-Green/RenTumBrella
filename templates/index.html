@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レンターンブレラ</title>
+</head>
+
+<body>
+    <h1>利用可能な傘のリスト</h1>
+    <ul>
+        {% for umbrella in umbrellas %}
+        <li>{{ umbrella.design }} (在庫: {{ umbrella.stock }})</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

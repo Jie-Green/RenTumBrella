@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Umbrella Catalog</title>
+</head>
+
+<body>
+    <h1>Umbrella Catalog</h1>
+    <ul>
+        {% for umbrella in umbrellas %}
+        <li>
+            <h2>{{ umbrella.name }}</h2>
+            <img src="{{ umbrella.image_url }}" alt="{{ umbrella.name }}" width="100">
+            <p>Category: {{ umbrella.category }}</p>
+            <p>{{ umbrella.description }}</p>
+            <p>Stock: {{ umbrella.stock }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
