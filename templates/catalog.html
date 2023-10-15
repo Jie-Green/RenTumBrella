@@ -2,22 +2,71 @@
 <html>
 
 <head>
-    <title>Umbrella Catalog</title>
+    <title>傘のカタログ</title>
 </head>
 
 <body>
-    <h1>Umbrella Catalog</h1>
+    <h1>
+        <p style="color: white;">〜傘のカタログ〜</p>
+    </h1>
     <ul>
         {% for umbrella in umbrellas %}
+
         <li>
-            <h2>{{ umbrella.name }}</h2>
-            <img src="{{ umbrella.image_url }}" alt="{{ umbrella.name }}" width="100">
-            <p>Category: {{ umbrella.category }}</p>
-            <p>{{ umbrella.description }}</p>
+            <div class="umbrella-item">
+                <h2>{{ umbrella.design }}</h2>
+
+                <img src="https://tshop.r10s.jp/chicclover/cabinet/hg/hg-50_3.jpg?_ex=400x400&s=0&r=1"
+                    alt="{{ umbrella.design }}" style="max-width: 200px;">
+                <img src="https://wargo.jp/cdn/shop/products/5599697200008_600x.jpg?v=1674461697"
+                    alt="{{ umbrella.design }}" style="max-width: 200px;">
+                <img src="https://m.media-amazon.com/images/I/41vY6KbumHL._AC_UY350_.jpg" alt="{{ umbrella.design }}"
+                    style="max-width: 208px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgLk-rN5rsFog4-RYXUu3z19FHg-t9fwxXhw&usqp=CAU"
+                    alt="{{ umbrella.design }}" style="max-width: 200px;">
+            </div>
+
+            <div class="umbrella-item">
+
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8WDKR6xc0AhlnK2kjsXpoMj3jjG1Yb_DJqg&usqp=CAU"
+                    alt="{{ umbrella.design }}" style="max-width: 200px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu_QoB0zfzCkvVGQYoHhhmQxX-dEseYX3inA&usqp=CAU"
+                    alt="{{ umbrella.design }}" style="max-width: 200px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsTPqzY4kjk40qmF0IePuXoxnod3dYtgwd7yqxUrdBFylmfSU0FwWbTe6pQXaMtyhvzQ4&usqp=CAU"
+                    alt="{{ umbrella.design }}" style="max-width: 208px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1nadDq-4VvrVYFBZPMF6U9v-FJPpBRCmzEw&usqp=CAU"
+                    alt="{{ umbrella.design }}" style="max-width: 200px;">
+            </div>
+
+            <!-- 画像表示の部分も追加してもよいです -->
             <p>Stock: {{ umbrella.stock }}</p>
+
+            <a href="{{ url_for('delete_umbrella', umbrella_id=umbrella.id) }}" class="btn btn-danger">削除</a>
+
+            <!-- レンタルボタン -->
+            {% if umbrella.stock > 0 %}
+            <a href="{{ url_for('rent_umbrella', umbrella_id=umbrella.id) }}" class="btn btn-primary">レンタル</a>
+            {% else %}
+            <span>在庫なし</span>
+            {% endif %}
+
+            <!-- 返却ボタン -->
+            <a href="{{ url_for('return_umbrella', umbrella_id=umbrella.id) }}" class="btn btn-secondary">返却</a>
+
         </li>
         {% endfor %}
     </ul>
+
+    <style>
+        body {
+            background-image: url("https://cdn.pixabay.com/photo/2016/03/09/09/30/woman-1245817_1280.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+
+
 </body>
 
 </html>

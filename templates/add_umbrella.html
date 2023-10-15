@@ -1,0 +1,25 @@
+<!-- add_umbrella.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>傘の追加</title>
+</head>
+
+<body>
+    <h1>新しい傘を追加する</h1>
+    <form action="{{ url_for('add_umbrella') }}" method="post">
+        <label for="design">デザイン:</label>
+        <input type="text" name="design" required><br><br>
+
+        <label for="stock">在庫:</label>
+        <input type="number" name="stock" required><br><br>
+
+        <input type="submit" value="追加">
+    </form>
+    <br>
+    <a href="{{ url_for('index') }}">ホームへ戻る</a>
+
+</body>
+
+</html>
